@@ -4,6 +4,7 @@ import fetchGenres from "../api/fetchGenres";
 const Home = () => {
   const [genres, setGenres] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState("");
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const getGenres = async () => {
@@ -20,6 +21,15 @@ const Home = () => {
 
   const handleChange = (event) => {
     setSelectedGenre(event.target.value);
+  };
+
+  const handleClick = () => {
+    if (selectedGenre) {
+      setError(null);
+      console.log(selectedGenre);
+    } else {
+      setError("Please select a genre");
+    }
   };
 
   return (
@@ -44,8 +54,9 @@ const Home = () => {
           ))}
         </select>
       </div>
+      {error && <p className="text-red-500">{error}</p>}
       <button
-        onClick={() => console.log("Button Clicked!")}
+        onClick={() => handleClick(selectedGenre)}
         className="px-14 py-2 mt-5 text-2xl rounded-full bg-gradient-to-r from-fuchsia-700 to-rose-600"
       >
         Search
