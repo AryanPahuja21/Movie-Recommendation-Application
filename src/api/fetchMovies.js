@@ -9,7 +9,7 @@ const fetchMovies = async ({ genre }) => {
           series_granularity: "show",
           order_direction: "asc",
           order_by: "original_title",
-          genres: "action",
+          genres: { genre },
           output_language: "en",
           show_type: "movie",
           country: "US",
