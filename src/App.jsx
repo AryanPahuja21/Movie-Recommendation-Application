@@ -1,9 +1,14 @@
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import Movies from "./pages/Movies";
 
 export default function App() {
   return (
-    <div className="h-screen bg-black/90 text-white">
-      <Home />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/movies/:genre" element={<Movies />} />
+      </Routes>
+    </Router>
   );
 }

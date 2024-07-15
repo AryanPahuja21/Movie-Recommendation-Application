@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import fetchGenres from "../api/fetchGenres";
+import { useNavigate } from "react-router-dom";
 
 const Home = () => {
   const [genres, setGenres] = useState([]);
   const [selectedGenre, setSelectedGenre] = useState("");
   const [error, setError] = useState(null);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getGenres = async () => {
@@ -26,14 +29,14 @@ const Home = () => {
   const handleClick = () => {
     if (selectedGenre) {
       setError(null);
-      console.log(selectedGenre);
+      navigate(`/movies/${selectedGenre}`);
     } else {
       setError("Please select a genre");
     }
   };
 
   return (
-    <main className="h-full flex flex-col gap-5 justify-center items-center">
+    <main className="h-screen bg-black/90 text-white flex flex-col gap-5 justify-center items-center">
       <h1 className="pt-5 text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-fuchsia-700 to-rose-600">
         ScreenMate
       </h1>
