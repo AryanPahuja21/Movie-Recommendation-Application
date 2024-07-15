@@ -17,14 +17,16 @@ const Movies = () => {
   }, []);
 
   return (
-    <main className="h-full bg-black/80 text-white">
+    <main className="h-full w-full bg-black/80 text-white">
       <h1 className="pt-10 py-2 text-5xl text-center font-bold capitalize text-transparent bg-gradient-to-b from-lime-400 to-cyan-700 bg-clip-text ">
         {genre} Movies
       </h1>
-      <section className="mt-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-10 gap-x-44 px-24">
-        {movies.map((movie) => (
-          <Card key={movie.id} movie={movie} />
-        ))}
+      <section className="w-full pb-24">
+        <div className="w-full mt-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-24">
+          {movies.map((movie) => (
+            <Card key={movie.id} movie={movie} />
+          ))}
+        </div>
       </section>
     </main>
   );
