@@ -10,6 +10,7 @@ const Movies = () => {
   const getMovies = async () => {
     const movies = await fetchMovies(genre);
     setMovies(movies.shows);
+    console.log(movies.shows);
   };
 
   useEffect(() => {
@@ -22,7 +23,7 @@ const Movies = () => {
         {genre} Movies
       </h1>
       <section className="w-full pb-24">
-        <div className="w-full mt-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-24">
+        <div className="w-full mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-24">
           {movies.map((movie) => (
             <Card key={movie.id} movie={movie} />
           ))}
