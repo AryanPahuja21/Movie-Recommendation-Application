@@ -20,6 +20,13 @@ const Movies = () => {
     getMovies();
   }, [genre]);
 
+  const handleSearch = (searchValue) => {
+    const filteredMovies = movies.filter((movie) =>
+      movie.originalTitle.toLowerCase().includes(searchValue.toLowerCase())
+    );
+    setMovies(filteredMovies);
+  };
+
   return (
     <>
       {isLoading ? (
@@ -32,7 +39,7 @@ const Movies = () => {
             {genre} Movies
           </h1>
           <p>
-            <Search />
+            <Search handleSearch={handleSearch} />
           </p>
           <section className="w-full pb-24">
             <div className="w-full mt-14 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-y-24">
